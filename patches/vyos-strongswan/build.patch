@@ -1,0 +1,19 @@
+Index: b/build.sh
+===================================================================
+--- /dev/null
++++ b/build.sh
+@@ -0,0 +1,14 @@
++#!/bin/sh
++set -e
++
++sudo mk-build-deps --install --tool "apt-get --yes --no-install-recommends"
++dpkg-buildpackage -b -us -uc -tc
++
++# build python3-vici
++debdir="$(readlink -f ..)"
++autoreconf --install; ./configure --enable-python-eggs
++
++cd "src/libcharon/plugins/vici/python"
++make
++python3 setup.py --command-packages=stdeb.command bdist_deb
++cp -v -t "$debdir" deb_dist/*.deb

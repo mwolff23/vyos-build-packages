@@ -1,0 +1,10 @@
+Index: b/build.sh
+===================================================================
+--- a/build.sh
++++ b/build.sh
+@@ -20,3 +20,5 @@ echo "I: Build Debian amd64 package"
+ cd ${SRC}
+ export PATH=/opt/go/bin:$PATH
+ LDFLAGS=-w make amd64.deb
++
++find build/dist -type f -iname '*.deb' -exec mv -v -t .. {} \;
