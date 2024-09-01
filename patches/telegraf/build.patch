@@ -1,0 +1,10 @@
+Index: b/build.sh
+===================================================================
+--- a/build.sh
++++ b/build.sh
+@@ -25,3 +25,5 @@ export PATH=/opt/go/bin:$PATH
+ # Generate default telegraf config
+ go run ./cmd/telegraf config > etc/telegraf.conf
+ LDFLAGS=-w make "${BUILD_ARCH}.deb"
++
++find build/dist -type f -iname '*.deb' -exec mv -v -t .. {} \;

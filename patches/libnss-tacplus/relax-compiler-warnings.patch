@@ -1,0 +1,13 @@
+Index: b/configure.ac
+===================================================================
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,7 +37,7 @@ AM_PROG_LIBTOOL
+ 
+ # Add -Wall -Werror if we are using GCC.
+ if test "x$GCC" = "xyes"; then
+-      CFLAGS="$CFLAGS -Wall -Werror"
++      CFLAGS="$CFLAGS -Wall"
+ fi
+ 
+ dnl --------------------------------------------------------------------

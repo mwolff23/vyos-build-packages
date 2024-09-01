@@ -1,0 +1,13 @@
+Index: b/Jenkinsfile
+===================================================================
+--- a/Jenkinsfile
++++ b/Jenkinsfile
+@@ -23,7 +23,7 @@
+ def package_name = 'keepalived'
+ 
+ def pkgList = [
+-    ['name': "${package_name}",
++    ['name': 'keepalived',
+      'scmCommit': 'debian/1%2.2.8-1',
+      'scmUrl': 'https://salsa.debian.org/debian/pkg-keepalived.git',
+      'buildCmd': 'sudo mk-build-deps --install --tool "apt-get --yes --no-install-recommends"; ../build.py'],

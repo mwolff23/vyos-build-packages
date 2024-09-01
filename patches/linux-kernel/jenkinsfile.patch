@@ -1,0 +1,28 @@
+Index: b/Jenkinsfile
+===================================================================
+--- a/Jenkinsfile
++++ b/Jenkinsfile
+@@ -27,7 +27,7 @@ def pkgList = [
+         cd ..
+ 
+         # read the required Kernel version
+-        KERNEL_VER=\$(cat ../../data/defaults.toml | tomlq -r .kernel_version)
++        KERNEL_VER=$(cat ../../data/defaults.toml | tomlq -r .kernel_version)
+         gpg2 --locate-keys torvalds@kernel.org gregkh@kernel.org
+         curl -OL https://www.kernel.org/pub/linux/kernel/v6.x/linux-${KERNEL_VER}.tar.xz
+         curl -OL https://www.kernel.org/pub/linux/kernel/v6.x/linux-${KERNEL_VER}.tar.sign
+Index: b/build-kernel.sh
+===================================================================
+--- a/build-kernel.sh
++++ b/build-kernel.sh
+@@ -14,8 +14,8 @@ cp -rv arch/ ${KERNEL_SRC}/
+ 
+ cd ${KERNEL_SRC}
+ 
+-echo "I: clean modified files"
+-git reset --hard HEAD
++#echo "I: clean modified files"
++#git reset --hard HEAD
+ 
+ KERNEL_VERSION=$(make kernelversion)
+ KERNEL_SUFFIX=-$(dpkg --print-architecture)-vyos

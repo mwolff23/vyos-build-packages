@@ -1,0 +1,10 @@
+Index: b/build.sh
+===================================================================
+--- a/build.sh
++++ b/build.sh
+@@ -25,3 +25,5 @@ for file in *.deb ; do mv $file ${file//
+ # Do not confuse *.deb upload logic by removing build in debian packages ...
+ # ugly but works
+ find src -name "*.deb" -type f -exec rm {} \;
++
++mv -v -t .. *.deb

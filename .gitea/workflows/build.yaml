@@ -1,0 +1,30 @@
+name: VyOS Packages
+
+on:
+  push:
+    branches:
+      - "sagitta"
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    container:
+      image: node:20-bookworm
+      env:
+        VYOS_VOLUME: vyos_sagitta
+      volumes:
+        - vyos_sagitta:/vyos
+    steps:
+      - name: Check out this repository code
+        uses: actions/checkout@v3
+        with:
+          path: 'pkg_scripts'
+
+      - name: Prepare Environment
+        env:
+          APT_PROXY: ${{ vars.APT_PROXY }}
+        run: "./pkg_scripts/docker_prepare.sh"
+
+      - name: Build
+        working-directory: /vyos
+        run: "./pkg_scripts/build.sh"

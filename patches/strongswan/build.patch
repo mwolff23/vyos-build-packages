@@ -1,0 +1,17 @@
+Index: b/build.sh
+===================================================================
+--- a/build.sh
++++ b/build.sh
+@@ -54,3 +54,12 @@ dch -v "5.9.11-2+vyos0" "Patchset for DM
+ 
+ echo "I: Build Debian Package"
+ dpkg-buildpackage -uc -us -tc -b -d
++
++# build python3-vici
++debdir="$(readlink -f ..)"
++autoreconf --install; ./configure --enable-python-eggs
++
++cd "src/libcharon/plugins/vici/python"
++make
++python3 setup.py --command-packages=stdeb.command bdist_deb
++cp -v -t "$debdir" deb_dist/*.deb 
