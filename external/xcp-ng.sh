@@ -8,7 +8,7 @@ set -e
 
 pkgdir="$1"
 
-[ -e "${pkgdir}/.xcp-ng" ] && exit 0
+[ -e "${pkgdir}/.xe-guest-utilities" ] && exit 0
 
 tmpdir=$(mktemp -d)
 cd "$tmpdir"
@@ -25,4 +25,4 @@ cp -v Linux/xe-guest-utilities_7.20.0-1_amd64.deb "$pkgdir"
 cd /tmp
 rm -rf "$tmpdir"
 
-touch "${pkgdir}/.xcp-ng"
+touch "${pkgdir}/.xe-guest-utilities"
