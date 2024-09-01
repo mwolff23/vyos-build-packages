@@ -5,7 +5,7 @@ basedir="$(readlink -f .)"
 
 if [ -n "$VYOS_VOLUME" ]; then
   # required for git pipeline
-  [ "$(id -u)" -eq 0 ] && exec sudo --preserve-env=VYOS_VOLUME -u node -- "$0" "$@"
+  [ "$(id -u)" -eq 0 ] && exec sudo --preserve-env=VYOS_VOLUME,VYOS_BUILDEXT -u node -- "$0" "$@"
   # persistent volume for /vyos
   docker_volume="$VYOS_VOLUME"
   builddir="/vyos/pkg_build"

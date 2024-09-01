@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+###
+# extracts xe-guest-utilities deb package from xcp-ng iso
+# yes ... this is the exact same file found in the official vyos repo
+###
+
 pkgdir="$1"
 
 [ -e "${pkgdir}/.xcp-ng" ] && exit 0
