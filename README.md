@@ -1,6 +1,6 @@
 # VyOS Package Build
 
-Generates all packages to build a complete LTS sagitta image from scratch.
+Generates all packages to build a complete sagitta image from scratch.
 
 
 ## build.sh
