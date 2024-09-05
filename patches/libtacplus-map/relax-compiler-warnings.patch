@@ -1,13 +1,13 @@
-Index: b/configure.ac
+Index: b/debian/rules
 ===================================================================
---- a/configure.ac
-+++ b/configure.ac
-@@ -37,7 +37,7 @@ AM_PROG_LIBTOOL
+--- a/debian/rules
++++ b/debian/rules
+@@ -9,5 +9,8 @@
+ #export DH_VERBOSE=1
+ SHELL := sh -e
  
- # Add -Wall -Werror if we are using GCC.
- if test "x$GCC" = "xyes"; then
--      CFLAGS="$CFLAGS -Wall -Werror"
-+      CFLAGS="$CFLAGS -Wall"
- fi
- 
- dnl --------------------------------------------------------------------
++# improve compatibility with newer gcc versions
++export DEB_CFLAGS_MAINT_APPEND = -Wno-address -Wno-stringop-truncation
++
+ %:
+ 	dh  $@ --with autoreconf
