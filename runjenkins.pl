@@ -65,7 +65,7 @@ foreach (@packages) {
 
   open(my $cmdfile, '>', "jenkinscmd_" . $_->{'name'} . ".sh") or die $!;
   print $cmdfile "#/bin/sh\nset -e\n\n";
-  print $cmdfile '[ -e debian/control ] && sudo mk-build-deps --install --tool "apt-get --yes --no-install-recommends" || true', "\n\n";
+  print $cmdfile "sudo apt-get update\n", '[ -e debian/control ] && sudo mk-build-deps --install --tool "apt-get --yes --no-install-recommends" || true', "\n\n";
   print $cmdfile $_->{'buildCmd'}, "\n";
   close($cmdfile);
 
